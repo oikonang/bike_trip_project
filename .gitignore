@@ -3,3 +3,6 @@
 
 # Data folder
 data/
+
+# App folder is a repo by itself
+app/
