@@ -1,8 +1,9 @@
 # IPython Notebook
 .ipynb_checkpoints
 
-# Data folder
+# Data folders
 data/
+python/python_data/
 
 # App folder is a repo by itself
 app/

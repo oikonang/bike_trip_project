@@ -8,7 +8,7 @@ import pandas as pd
 import datetime
 
 #Global Variables - put your data in the file 'client.secret' and separate the fields with a comma!
-client_id, secret = open('client.secret').read().strip().split(',')
+client_id, secret = open('python_data/keys/client_angelos.secret').read().strip().split(',')
 port = 5000
 url = 'http://localhost:%d/authorized' % port
 allDone = False
@@ -133,7 +133,7 @@ class MyHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
     #Write the file to a CSV - this will end up in your working directory
     now = datetime.datetime.now()
-    df_total.to_csv('RideData_' + str(now.strftime('%Y%m%d%H%M%S')) + '.csv')
+    df_total.to_csv('python_data/strava_angelos_' + str(now.strftime('%Y%m%d%H%M%S')) + '.csv')
 
 ###Run the program to login and grab data###
 httpd = BaseHTTPServer.HTTPServer(('localhost', port), MyHandler)
