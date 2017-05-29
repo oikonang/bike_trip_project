@@ -29,11 +29,11 @@ img{max-width:100%;}
 /*--end reset--*/
 body {
 	margin:0;
-	font-family: 'Hind Siliguri', sans-serif;
+	font-family: 'Seravek', cursive; /*Hind Siliguri sans-serif*/
 }
 h1,h2,h3,h4,h5,h6,input,p,a,select,button,textarea,label{
 	margin:0;
-	font-family: 'Hind Siliguri', sans-serif;
+	font-family: 'Seravek', cursive;
 }
 body a{
 	-webkit-transition:0.5s all;
