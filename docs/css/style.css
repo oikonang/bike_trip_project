@@ -13,8 +13,48 @@ body a {
 }
 html, body{
     font-size: 100%;
-	font-family: 'Seravek', cursive;
+	font-family: 'Seravek', sans-serif;
 }
+.social-icon {
+    padding-top: 0.5em;
+}
+.social-icon a {
+    display: inline-block;
+    color: #fff;
+    margin: 0 0.7em;
+    font-size: 1.1em;
+    border: 2px solid;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 3.4em;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    transition: 0.5s all;
+}
+.social-icon a:hover {
+    color: #2fa92f;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    transition: 0.5s all;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+/*-- ul inside about --*/
+.about ul{
+  /*float:left;*/
+  margin-top: 1em;
+}
+.about li{
+  margin-top: .7em;
+}
+
 /*-- banner --*/
 .banner{
     background: url(../images/last_gas_station.jpg) no-repeat 0px 0px;
@@ -41,7 +81,7 @@ html, body{
 }
 .agile-logo h1 a{
     font-size: 1.6em;
-    font-family: 'Seravek', cursive;
+    font-family: 'Seravek', sans-serif;
     letter-spacing: 3px;
     color: #FFFFFF;
     text-decoration: none;
@@ -527,6 +567,10 @@ html, body{
     text-align: left;
     background: #eeeeee; /*#e5eff1*/
 }
+#tools .agile-about-right{
+    /*border-left: 1px solid black;*/
+    background: #11c3fe;
+}
 .agile-about-left {
     padding: 5em;
     min-height: 498px;
@@ -657,7 +701,8 @@ html, body{
 	margin:4em 0 0 0;
 }
 .agile-blog-grid-img img{
-    width: 100%;
+    width: 250px;
+    height:350px;
     margin: 0 0 1em 0;
 }
 .agile-blog-grid-img a{
@@ -826,13 +871,18 @@ html, body{
 }
 /*-- //contact --*/
 /*-- map --*/
-.agileits-w3layouts-map iframe{
+.agileits-w3layouts-map{
 	width:100%;
 	height:350px;
 	border:none;
 }
 /*-- //map --*/
 /*-- footer --*/
+#footer {
+  background-color: #eeeeee;
+  margin: 0em
+}
+
 .footer-grid h4{
 	color:#212121;
 	font-size:1.5em;
@@ -1137,6 +1187,9 @@ html, body{
 	}
 }
 @media(max-width:600px){
+  .social-icon a {
+    margin: 0 0.3em;
+  }
 	.header-right nav {
 		left: 9%;
 	}
@@ -1174,6 +1227,9 @@ html, body{
 	.w3-agileits-about-left .w3-agileits-about-right{
 		min-height: 307px;
 	}
+  .social-icon {
+    padding-top: 0;
+  }
 	.nav-tabs > li {
 		margin: 0 0px 5px 0;
 	}
@@ -1288,7 +1344,7 @@ html, body{
 	.agile-logo h1 a {
 		font-size: .9em;
 	}
-	.agileits-w3layouts-map iframe {
+	.agileits-w3layouts-map{
 		height: 250px;
 	}
 }

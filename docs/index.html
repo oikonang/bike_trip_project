@@ -33,6 +33,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="//fonts.googleapis.com/css?family=Kaushan+Script&amp;subset=latin-ext" rel="stylesheet">
 <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
 <!-- //font -->
+<!-- realtime-map -->
+<link rel="stylesheet" type="text/css" href="css/realtime_map.css">
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"/>
+<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+<script src="https://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<!-- //realtime-map -->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/SmoothScroll.min.js"></script>
@@ -68,17 +75,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									<a href="#about" class="scroll"><span>About</span></a>
 								</li>
 								<li>
-									<a href="#tracking" class="scroll"><span>Tracking Equipment</span></a>
+									<a href="#tracking" class="scroll"><span>Metrics</span></a>
 								</li>
                                 <li>
                                     <a href="#tools" class="scroll"><span>Tools</span></a>
                                 </li>
                                 <li>
-                                    <a href="#contributors" class="scroll"><span>Contributors</span></a>
+                                    <a href="#realtime-map" class="scroll"><span>Realtime Map</span></a>
                                 </li>
 								<li>
 									<a href="#gallery" class="scroll"><span>Gallery</span></a>
 								</li>
+								<li>
+                                    <a href="#contributors" class="scroll"><span>Contributors</span></a>
+                                </li>
 								<!-- <li>
 									<a href="#blog" class="scroll"><span>Blog</span></a>
 								</li>
@@ -167,6 +177,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						 </script>
 						<!--banner Slider starts Here-->
 					</div>
+						<div class="social-icon">
+							<a href="#" class="social-button facebook"><i class="fa fa-facebook fa-2x"></i></a> 
+							<a href="https://www.instagram.com/thebiketripproject/" class="social-button google"><i class="fa fa-instagram fa-2x"></i></a> 
+							<a href="#" class="social-button dribbble"><i class="fa fa-youtube fa-2x"></i></a>
+						</div>
 				</div>
 			</div>
 		</div>
@@ -349,43 +364,39 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- tools -->
     <div class="about" id="tools">
             <div class="col-xs-6 agile-about-left">
-                <h2 align='center'>Hardware</h2>
-                <p align='center'>
-                   Motorola Nexus 6</br>
-                   Motorola Nexus 4</br>
-                   Sony M4Aqua </br>
-                   Garmin Vivosmart HR+</br>
-                   FitBit Charge</br>
-                   2 x Anker PowerCore+ 26800mAh</br>
-                   2 x Anker PowerPort+ 1 with Quick Charge 3.0</br>
-                </p>
+                <h2>Hardware</h2>
+                <ul>
+				  <li>Motorola Nexus 6</li>
+				  <li>Motorola Nexus 4</li>
+				  <li>Sony M4Aqua</li>
+				  <li>Garmin Vivosmart HR+</li>
+				  <li>FitBit Charge</li>
+				  <li>2 x Anker PowerCore+ 26800mAh</li>
+				  <li>2 x Anker PowerPort+ 1 with Quick Charge 3.0</li>
+				</ul>
             </div>
             <div class="col-xs-6 agile-about-right">
-                <h2 align='center'>Software</h2>
-                <p align='center'>
-                   Garmin Connect</br>
-                   FitBit</br>
-                   Strava</br>
-                   Google Fit</br>
-                   FLifeSum</br>
-                   Adobe Clip</br>
-                   Custom app for coordinate sync and weather API call</br>
-                   Trello</br>
-                </p>
+                <h2>Software/Apps</h2>
+                <ul>
+				  <li>Garmin Connect</li>
+				  <li>FitBit</li>
+				  <li>Strava</li>
+				  <li>Google Fit</li>
+				  <li>Adobe Clip</li>
+				  <li>LifeSum</li>
+				  <li>Custom app for coordinate sync and weather API call</li>
+				</ul>
             </div>        
         <div class="clearfix"> </div>
     </div>
     <!-- //tools -->
-    <!-- contributors -->
-    <div class="about" id="contributors">
-        <div class="container">
-                <div class="col-md-12 tracking-top-left">
-                        <h2 align="center">Contributors</h2>
-                </div>
-        </div>
-    </div>  
-    
-    <!-- //contributors -->
+
+	<!-- map -->
+	<div id='realtime-map'>
+		<div class="agileits-w3layouts-map" id="realtime_map"></div>
+	    <script type="text/javascript" src="js/realtime_map.js"></script>
+	</div>
+	<!-- map -->
 	<!-- gallery -->
 	<div class="gallery" id="gallery">
 		<div class="container">
@@ -849,48 +860,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="clearfix"> </div>
 							</div>
 						</div>
-						<!-- <div role="tabpanel" class="tab-pane fade" id="painting" aria-labelledby="painting-tab">
-							<div class="w3_tab_img">
-								<div class="col-md-3 w3_tab_img_left">
-									<div class="demo">
-										<a class="cm-overlay" href="images/8.jpg">
-											<figure class="imghvr-shutter-in-out-diag-2"><img src="images/8.jpg" alt=" " class="img-responsive">
-											</figure>
-										</a>
-									</div>
-								</div>
-								<div class="col-md-3 w3_tab_img_left">
-									<div class="demo">
-										<a class="cm-overlay" href="images/9.jpg">
-											<figure class="imghvr-shutter-in-out-diag-2"><img src="images/9.jpg" alt=" " class="img-responsive">
-											</figure>
-										</a>
-									</div>
-								</div>
-								<div class="col-md-3 w3_tab_img_left">
-									<div class="demo">
-										<a class="cm-overlay" href="images/2.jpg">
-											<figure class="imghvr-shutter-in-out-diag-2"><img src="images/2.jpg" alt=" " class="img-responsive">
-											</figure>
-										</a>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div>
-						<div role="tabpanel" class="tab-pane fade" id="school" aria-labelledby="school-tab">
-							<div class="w3_tab_img">
-								<div class="col-md-3 w3_tab_img_left">
-									<div class="demo">
-										<a class="cm-overlay" href="images/3.jpg">
-											<figure class="imghvr-shutter-in-out-diag-2"><img src="images/3.jpg" alt=" " class="img-responsive">
-											</figure>
-										</a>
-									</div>
-								</div>
-								<div class="clearfix"> </div>
-							</div>
-						</div> -->
 					</div>
 			</div>
 			<script src="js/jquery.tools.min.js"></script>
@@ -903,49 +872,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</script>
 	</div>
 	<!-- //gallery -->
-	<!-- blog -->
-	<!-- <div class="blog" id="blog">
+    
+	<!-- contributors -->
+	<div class="blog" id="contributors">
 		<div class="container">
 			<div class="w3ls-heading">
-				<h3>Blog</h3>
-				<h5>Our Blog Posts</h5>
+				<h3>Contributors</h3>
+				<p>Special thanks to the supervisors and the special contributor of the project</p>
 			</div>
 			<div class="agile-blog-grids">
 				<div class="col-md-4 agile-blog-grid">
 					<div class="agile-blog-grid-img">
-						<a href="#" data-toggle="modal" data-target="#myModal"><img src="images/5.jpg" alt="" /></a>
-						<a href="#" data-toggle="modal" data-target="#myModal">Sed odio mauris, pulvinar vel diam at, consectetur auctor sapien.</a>
-						<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Sept 24, 2016 &nbsp;&nbsp; <a href="#">Comments (07)</a></p>
+						<img src="images/sune.jpeg" alt="" />
+						<a href="https://sunelehmann.com/" align='center'>Sune Lehmann</a>
+						<!-- <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Sept 24, 2016 &nbsp;&nbsp; <a href="#">Comments (07)</a></p> -->
 					</div>
 					<div class="agile-blog-grid-info">
-						<p>Phasellus interdum mi et volutpat tincidunt. Vivamus imperdiet, sem at eleifend consectetur, elit lorem consequat odio, sit amet maximus mi diam pulvinar arcu.</p>
+						<p>Associate Professor at the Department of <span style="font-weight:bold">Applied Mathematics and Computer Science</span>, at the <span style="font-weight:bold">Technical University of Denmark</span>.</p>
 					</div>
 				</div>
 				<div class="col-md-4 agile-blog-grid">
 					<div class="agile-blog-grid-img">
-						<a href="#" data-toggle="modal" data-target="#myModal"><img src="images/2.jpg" alt="" /></a>
-						<a href="#" data-toggle="modal" data-target="#myModal">Aliquam ut nisi pulvinar, ultricies magna sit amet, hendrerit orci.</a>
-						<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Oct 26, 2016 &nbsp;&nbsp; <a href="#">Comments (10)</a></p>
+						<img src="images/jakob.jpeg" alt="" />
+						<a href="http://oaklab.org/">Jakob Eg Larsen</a>
+						<!-- <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Oct 26, 2016 &nbsp;&nbsp; <a href="#">Comments (10)</a></p> -->
 					</div>
 					<div class="agile-blog-grid-info">
-						<p>Phasellus interdum mi et volutpat tincidunt. Vivamus imperdiet, sem at eleifend consectetur, elit lorem consequat odio, sit amet maximus mi diam pulvinar arcu.</p>
+						<p>Associate Professor at the Department of <span style="font-weight:bold">Applied Mathematics and Computer Science</span>, at the <span style="font-weight:bold">Technical University of Denmark</span>.</p>
 					</div>
 				</div>
 				<div class="col-md-4 agile-blog-grid">
 					<div class="agile-blog-grid-img">
-						<a href="#" data-toggle="modal" data-target="#myModal"><img src="images/3.jpg" alt="" /></a>
-						<a href="#" data-toggle="modal" data-target="#myModal">Cum sociis natoque penatibus et magnis dis parturient montes</a>
-						<p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Nov 08, 2016 &nbsp;&nbsp; <a href="#">Comments (15)</a></p>
+						<img src="images/ricky.jpg" alt="" /></a>
+						<a href="http://www.richmondweb.it/">Riccardo Cannistrà</a>
+						<!-- <p>Posted By <a href="#">Admin</a> &nbsp;&nbsp; on Nov 08, 2016 &nbsp;&nbsp; <a href="#">Comments (15)</a></p> -->
 					</div>
 					<div class="agile-blog-grid-info">
-						<p>Phasellus interdum mi et volutpat tincidunt. Vivamus imperdiet, sem at eleifend consectetur, elit lorem consequat odio, sit amet maximus mi diam pulvinar arcu.</p>
+						<p>Masters student in Digital Media Engineering at the Department of <span style="font-weight:bold">Applied Mathematics and Computer Science</span>, at the <span style="font-weight:bold">Technical University of Denmark</span></p>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
 		</div>
 	</div>
-	<!-- //blog -->
+	<!-- //contributors -->
 	<!-- team -->
 	<!-- <div class="team" id="team">
 		<div class="container">
@@ -955,7 +925,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="agileinfo-team-grids">
 				<div class="col-md-3 wthree-team-grid">
-					<img src="images/t1.jpg" alt="">
+					<img src="images/sune.jpeg" alt="">
 					<div class="wthree-team-grid-info">
 						<h4>Mary Jane</h4>
 						<p>Vestibulum</p>
@@ -969,7 +939,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</div>
 				<div class="col-md-3 wthree-team-grid">
-					<img src="images/t2.jpg" alt="">
+					<img src="images/jakob.jpeg" alt="">
 					<div class="wthree-team-grid-info">
 						<h4>Peter Parke</h4>
 						<p>Vestibulum</p>
@@ -983,7 +953,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</div>
 				<div class="col-md-3 wthree-team-grid">
-					<img src="images/t3.jpg" alt="">
+					<img src="images/ricky.jpg" alt="">
 					<div class="wthree-team-grid-info">
 						<h4>Jennifer Watson</h4>
 						<p>Vestibulum</p>
@@ -997,7 +967,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 				</div>
 				<div class="col-md-3 wthree-team-grid">
-					<img src="images/t4.jpg" alt="">
+					<img src="images/ang.jpg" alt="">
 					<div class="wthree-team-grid-info">
 						<h4>Steven Wilson</h4>
 						<p>Vestibulum</p>
@@ -1034,72 +1004,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div> -->
 	<!-- //contact -->
-	<!-- map -->
-	<!-- <div class="agileits-w3layouts-map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d396368.6856440282!2d-94.85590815170958!3d39.09211671179677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87c0f75eafe99997%3A0x558525e66aaa51a2!2sKansas+City%2C+MO%2C+USA!5e0!3m2!1sen!2sin!4v1477900730949" allowfullscreen></iframe>
-	</div> -->
-	<!-- map -->
+	
 	<!-- footer -->
-	<!-- <footer>
-		<div class="container">
-			<div class="footer-grids">
-				<div class="col-md-4 footer-grid">
-					<h4>Menu</h4>
-					<div class="col-md-6 footer-grid-left">
-						<ul>
-							<li>
-								<a href="#home" class="scroll">Home</a>
-							</li>
-							<li>
-                                <a href="#counter" class="scroll"><span>Countdown</span></a>
-                            </li>
-                            <li>
-                                <a href="#about" class="scroll"><span>About</span></a>
-                            </li>
-                            <li>
-                                <a href="#tracking" class="scroll"><span>Tracking Equipment</span></a>
-                            </li>
-							<li>
-								<a href="#gallery" class="scroll">Gallery</a>
-							</li>
-						</ul>
-					</div>
-					<div class="col-md-6 footer-grid-left">
-						<ul>
-							<li>
-								<a href="#blog" class="scroll">Blog</a>
-							</li>
-							<li>
-								<a href="#team" class="scroll">Team</a>
-							</li>
-							<li>
-								<a href="#contact" class="scroll">Contact Us</a>
-							</li>
-						</ul>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="col-md-4 footer-grid">
-					<h4>Contact Us</h4>
-					<ul>
-						<!-- <li><span>Location : </span>Broome St, NY 10002, Kansas City.</li> -->
-						<!-- <li><span>Phone : </span> +01 111 222 3333</li> -->
-						<!-- <li><span>Email : </span><a href="mailto:abiketripproject@gmail.com">abiketripproject@gmail.com</a></li>
-					</ul>
-				</div>
-				<div class="col-md-4 footer-grid">
-					<h4>Newsletter</h4>
-					<p>Subscribe With Us</p>
-					<form action="#" method="post">
-						<input type="text" placeholder="Subscribe" name="Subscribe" required="">
-						<button class="btn1">Go</button>
-					</form>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
-		</div>
-	</footer> -->
-	<!-- //footer -->
+    <div id='footer'>
+        <div align='center' class="col-md-12 tracking-top-left">
+                        <p>MADE AT</p><br /><br />
+                        <a href="http://dtu.dk" align='center'><img src="images/dtu.png"/></a>
+            </div>
+    </div>
+  	<!-- //Footer -->
 	<!-- copyright -->
 	<div class="copyright">
 		<div class="container">
