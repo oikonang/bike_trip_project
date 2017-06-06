@@ -35,7 +35,7 @@ marker_start.bindPopup("<b>Starting Point!</b>").openPopup();
 var marker_finish = L.marker([40.62478, 22.94952]).addTo(map);
 marker_finish.bindPopup("<b>Finishing Point!</b>").openPopup();
     
-    d3.csv("../data/daily_update.csv", function(collection) {
+    d3.csv("../data/geolocations.csv", function(collection) {
 
         // Stream transform. transforms geometry before passing it to
         // listener. Can be used in conjunction with d3.geoPath

@@ -1125,7 +1125,7 @@ img {
 .thumbnail a > img,
 .carousel-inner > .item > img,
 .carousel-inner > .item > a > img {
-  display: block;
+  /*display: block;*/ /*uncomment if there is any issue with the rest of the website*/ 
   max-width: 100%;
   height: auto;
 }
