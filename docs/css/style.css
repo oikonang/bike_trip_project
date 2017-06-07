@@ -871,13 +871,11 @@ html, body{
     -ms-transition: 0.5s all;
 }
 /*-- //contact --*/
+
 /*-- map --*/
-.agileits-w3layouts-map{
-	width:100%;
-	height:350px;
-	border:none;
-}
+/*refer to the realtime_map.css file*/
 /*-- //map --*/
+
 /*-- footer --*/
 #footer {
   background-color: #eeeeee;
@@ -1189,7 +1187,8 @@ html, body{
 }
 @media(max-width:600px){
   .social-icon a {
-    margin: 0 0.3em;
+    /*margin: 0 0.3em;*/
+    margin: 30px 30px 30px 12px;
   }
 	.header-right nav {
 		left: 9%;
@@ -1328,6 +1327,10 @@ html, body{
 	.wthree-team-grid:nth-child(2),.wthree-team-grid:nth-child(3), .wthree-team-grid:nth-child(4) {
 		margin: 1em 0 0 0;
 	}
+  .social-icon a {
+    /*margin: 0 0.3em;*/
+    margin: 30px 10px 10px 17px;
+  }
 }
 @media(max-width:375px){
 	.header-right nav ul li a {
@@ -1345,9 +1348,10 @@ html, body{
 	.agile-logo h1 a {
 		font-size: .9em;
 	}
-	.agileits-w3layouts-map{
-		height: 250px;
-	}
+  .social-icon a {
+    /*margin: 0 0.3em;*/
+    margin: 30px 10px 10px 17px;
+  }
 }
 @media(max-width:320px){
 	.agile-logo h1 a {
@@ -1390,5 +1394,9 @@ html, body{
 	.contact-form input[type="text"],.contact-form input[type="email"],.contact-form textarea{
 		padding: .5em;
 	}
+  .social-icon a {
+    /*margin: 0 0.3em;*/
+    margin: 30px 9px 10px 9px;
+  }
 }
 /*-- //responsive --*/

@@ -222,6 +222,9 @@
 		width: 43%;
 		float: left;
 	}
+	.ds-black .ds-element-seconds{
+		margin-left: 50px;
+	}
 	.ds-element.ds-element-hours {
 		float: right;
 	}
@@ -229,6 +232,9 @@
 @media screen and (max-width: 384px){
 	.dsCountDown.ds-black {
 		margin: 4% 0;
+	}
+	.ds-black .ds-element-seconds{
+		margin-left: 50px;
 	}
 }	
 @media screen and (max-width: 320px){

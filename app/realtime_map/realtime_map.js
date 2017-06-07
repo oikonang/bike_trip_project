@@ -172,8 +172,8 @@ function mouseover(d){
            .style("opacity", .9);
 
         // Place the tooltip
-        div.style("left", (d3.event.pageX) + "px")   
-           .style("top", (d3.event.pageY - 28) + "px");
+        // div.style("left", (d3.event.pageX) + "px")   
+        //    .style("top", (d3.event.pageY - 28) + "px");
 }// close mouseover
 // Create a function to handle the tip on mouseout
 function mouseout(d){
