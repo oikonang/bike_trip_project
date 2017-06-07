@@ -25,7 +25,21 @@ g = svg.append("g");
 var div = d3.select("#map")
             .append("div") 
             .attr("class", "tooltip")       
-            .style("opacity", 0);
+            .style("opacity", .9);
+
+// Add a starting message
+div.html("<h4>Realtime Location</h4>"+ "<br/>" + "Hover over a point");
+
+// Define the div for the legend
+var legend = d3.select("#map")
+               .append("div")
+               .attr("class", "legend")
+               .style("opacity", .9);
+
+// Add a starting message
+legend.html('<i style="background: green"></i>' + 'Starting Point' + '<br/>' + 
+            '<i style="background: yellow"></i>' + 'Daily Update' + '<br/>' +
+            '<i style="background: red"></i>' + 'Finish Point');
     
     d3.csv("daily_update.csv", function(collection) {
 
@@ -60,34 +74,34 @@ var div = d3.select("#map")
             .enter().append("circle")
             .style("fill", function(d) {
                 if(+d.state == 0){
-                    return 'red'
-                }
-                else if(+d.state == 2){
-                    return 'yellow'
+                    return 'green'
                 }
                 else if(+d.state == 1){
-                    return 'green'
+                    return 'yellow'
+                }
+                else if(+d.state == 2){
+                    return 'red'
                 }
             })  
             .style("opacity", function(d) {
                 if(+d.state == 0){
-                    return 0.8
-                }
-                else if(+d.state == 2){
-                    return 0.7
+                    return 1
                 }
                 else if(+d.state == 1){
-                    return 1
+                    return 0.7
+                }
+                else if(+d.state == 2){
+                    return 0.8
                 }
             })   
             .attr("r", function(d) {
                 if(+d.state == 0){
                     return 10
                 }
-                else if(+d.state == 2){
+                else if(+d.state == 1){
                     return 5
                 }
-                else if(+d.state == 1){
+                else if(+d.state == 2){
                     return 10
                 }
             })
@@ -140,17 +154,17 @@ var div = d3.select("#map")
 
 // Create a function to handle the tip on mouseover
 function mouseover(d){
-        if(+d.state == 1){
+        if(+d.state == 0){
             // Write staff on tooltip
-            div.html("<strong>Starting point!</strong>"+ "<br/>" + "Date: " + d.date)  
+            div.html("<h4>Realtime Location</h4>" + "<br/>" + "<strong>Starting point!</strong>"+ "<br/>" + "Date: " + d.date)  
+        }
+        else if(+d.state == 1){
+            // Write staff on tooltip
+            div.html("<h4>Realtime Location</h4>" + "<br/>" + "Day " + d.day + "<br/>" + "Date: " + d.date)  
         }
         else if(+d.state == 2){
             // Write staff on tooltip
-            div.html("Day " + d.day + "<br/>" + "Date: " + d.date)  
-        }
-        else if(+d.state == 0){
-            // Write staff on tooltip
-            div.html("<strong>Finish point</strong>" + "<br/>" + "Day " + d.day + "<br/>" + "Date: " + d.date)  
+            div.html("<h4>Realtime Location</h4>" + "<br/>" + "<strong>Finish point</strong>" + "<br/>" + "Total Days " + d.day + "<br/>" + "Date: " + d.date)  
         }
         // Show tooltip
         div.transition()    
@@ -166,7 +180,9 @@ function mouseout(d){
         // remove the tip
         div.transition()
            .duration(500)
-           .style("opacity", 0); 
+           .style("opacity", .9); 
+
+        div.html("<h4>Realtime Location</h4>"+ "<br/>" + "Hover over a point");
 }// close mouseout
 // Use Leaflet to implement a D3 geometric transformation.
 // the latLngToLayerPoint is a Leaflet conversion method:
