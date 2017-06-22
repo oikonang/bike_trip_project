@@ -58,9 +58,10 @@ html, body{
 
 /*-- banner --*/
 .banner{
-    background: url(../images/last_gas_station.jpg) no-repeat 0px 0px;
-    background-size: cover;
+    background: url(../images/logo.png) no-repeat 0px 0px;
+    /*background-size: cover;*/
     padding: 0em 0 0em;
+    background-position: 50% 30%;
 }
 .banner-dot {
     background: url(../images/dott.png)repeat 0px 0px;
@@ -189,8 +190,8 @@ html, body{
 }
 .header-right nav {
     position: absolute;
-    top: -128%;
-    left: 15%;
+    top: -170%;
+    left: 10%;
     color: #999;
 }
 .header-right nav ul li.animate {
@@ -260,11 +261,19 @@ html, body{
   -webkit-transition: top 0.3s ease 0.35s;
   transition: top 0.3s ease 0.35s;
 }
+.header-right nav ul li:nth-child(8) {
+  -moz-transition: top 0.3s ease 0.35s;
+  -o-transition: top 0.3s ease 0.35s;
+  -webkit-transition: top 0.3s ease;
+  -webkit-transition-delay: 0.35s;
+  -webkit-transition: top 0.3s ease 0.35s;
+  transition: top 0.3s ease 0.35s;
+}
 .header-right nav ul li:hover {
   opacity: 1;
 }
 .header-right nav ul li.active a{
-    color: #11c3fe;
+    color: #47885e; /*#11c3fe old light blue. now green*/
 }
 .header-right nav ul li a{
     color: #212121;
@@ -276,7 +285,7 @@ html, body{
     display: block;
 }
 .header-right nav ul li a span:hover{
-    color: #11c3fe;
+    color: #47885e; /*#11c3fe old light blue. now green*/
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-o-transition: 0.5s all;
@@ -566,16 +575,23 @@ html, body{
     padding: 5em;
     min-height: 498px;
     text-align: left;
-    background: #eeeeee; /*#e5eff1*/
+    color: #212121; /
+    background: #eeeeee; /*#e5eff1,  #eeeeee*/ 
 }
 #tools .agile-about-right{
     /*border-left: 1px solid black;*/
-    background: #11c3fe;
+    background: #47885e; /*#11c3fe old light blue*/
+    color:#fef6cd; /*this is yellow font*/
+}
+#tools .agile-about-left{
+    /*border-left: 1px solid black;*/
+    color: #633A11; /*this is brown font*/
 }
 .agile-about-left {
     padding: 5em;
     min-height: 498px;
     text-align: right;
+    color: #212121; /*flag to change*/
     background: #eeeeee;
 }
 .agile-about-right h2,.agile-about-left h2,.tracking-top-left h3,.w3ls-heading h3{
@@ -628,21 +644,24 @@ html, body{
 .tracking-grid-icon{
     text-align: center;
     padding: 2em 0;
-    border: solid 1px #d2d2d2;
+    border: solid 1px #d2d2d2; 
+    color: #633A11; /*created now for the icons to be brown*/
 }
 .tracking-grid-icon i.fa.fa-cogs,.tracking-grid-icon i.fa.fa-thumbs-up,.tracking-grid-icon i.fa.fa-user,.tracking-grid-icon i.fa.fa-comments,.tracking-grid-icon i.fa.fa-certificate,.tracking-grid-icon i.fa.fa-bell,.tracking-grid-icon i.fa.fa-asterisk,.tracking-grid-icon i.fa.fa-anchor,.tracking-grid-icon i.fa.fa-cog{
-    color: #b2b2b2;
+    color: #633A11; /*#b2b2b2 the old black grey-ish*/
     font-size: 2em;
 }
 .tracking-grid-icon p{
-	color:#212121;
+	color: inherit;
+  /*color:#633A11; */ /*#212121 the old black grey-ish*/
 	font-size:1em;
 	margin:1em 0 0 0;
 	font-weight:600;
 }
 .tracking-grid-icon:hover{
-	background:#11c3fe;
-	border: solid 1px #11c3fe;
+	color:#fef6cd; /* created now for the icons to turn yellow when hover */
+  background:#47885e; /* #11c3fe the old blue light */
+	border: solid 1px #fef6cd; /* the new  yellow light */
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-o-transition: 0.5s all;
@@ -650,27 +669,30 @@ html, body{
 	-ms-transition: 0.5s all;
 }
 .tracking-grid-icon:hover  i.fa.fa-cogs,.tracking-grid-icon:hover i.fa.fa-thumbs-up,.tracking-grid-icon:hover  i.fa.fa-user,.tracking-grid-icon:hover i.fa.fa-road,.tracking-grid-icon:hover  i.fa.fa-comments,.tracking-grid-icon:hover i.fa.fa-certificate,.tracking-grid-icon:hover  i.fa.fa-bell,.tracking-grid-icon:hover i.fa.fa-asterisk,.tracking-grid-icon:hover  i.fa.fa-anchor,.tracking-grid-icon:hover i.fa.fa-cog{
-	color:#FFFFFF;
+	color:#fef6cd; /* #FFFFFF the old black */
 }
 .tracking-icons-bottom{
 	margin:2em 0 0 0;
 }
 /*-- //tracking --*/
 /*-- gallery --*/
+#gallery p{
+  color:#999999 
+}
 .gallery{
     background: #eeeeee;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	color: #ffffff;
+	color: #fef6cd;  /*#11c3fe old white. now yellow*/
     cursor: default;
-    background: #11c3fe;
-    border: solid 1px #11c3fe;
+    background: #47885e; /* #11c3fe old light blue. now green*/
+    border: solid 1px #fef6cd;  /*#11c3fe old light blue. now yellow*/
 }
 .nav-tabs > li > a {
 	margin-right: 3px;
     font-size: 1em;
-    color: #212121;
-    border: solid 1px #212121;
+    color: #633A11; /*the default font color to be brown*/
+    border: solid 1px #d2d2d2;
     padding: .5em 1em;
     border-radius: 0;
 }
@@ -686,9 +708,9 @@ html, body{
     margin: 0 10px;
 }
 .nav-tabs > li > a:hover {
-	color: #FFFFFF;
-    background: #11c3fe;
-    border: solid 1px #11c3fe;
+	color: #fef6cd; /*#FFFFFF old white*/
+    background: #47885e; /* #11c3fe old light blue. now green*/
+    border: solid 1px #fef6cd; /* #11c3fe old light blue. now yellow*/
 }
 .w3_tab_img_left {
     padding: 0;
@@ -714,7 +736,7 @@ html, body{
 	text-decoration:none;
 }
 .agile-blog-grid-img a:hover{
-	color:#11c3fe;
+	color:#47885e; /*#11c3fe old light blue. now green*/
 }
 .agile-blog-grid-img a:focus{
 	outline:none;
@@ -874,6 +896,9 @@ html, body{
 
 /*-- map --*/
 /*refer to the realtime_map.css file*/
+#realtime-map p{
+  color:#999999 
+}
 /*-- //map --*/
 
 /*-- footer --*/
@@ -962,7 +987,7 @@ html, body{
 	margin:0;
 }
 .copyright p a{
-	color:#11c3fe;
+	color:#fef6cd; /*#11c3fe old light blue. now yellow*/
 	text-decoration:none;
 	margin:0;
 }
@@ -1311,8 +1336,10 @@ html, body{
 		width: 90%;
 	}
 	.banner {
-		background: url(../images/1.jpg) no-repeat -96px 0px;
-		background-size: cover;	
+		background: url(../images/logo.png) no-repeat -96px 0px;
+		/*background-size: cover;	*/
+    padding: 0em 0 0em;
+    background-position: 50% 30%;
 	}
 	.w3-agileits-about-left, .w3-agileits-about-right{
 		min-height: 234px;
@@ -1343,7 +1370,7 @@ html, body{
 		margin-top: 4em;
 	}
 	.header-right nav {
-		top: -90%;
+		top: -110%;
 	}
 	.agile-logo h1 a {
 		font-size: .9em;
