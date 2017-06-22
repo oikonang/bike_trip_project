@@ -37,7 +37,7 @@ html, body{
     transition: 0.5s all;
 }
 .social-icon a:hover {
-    color: #2fa92f;
+    color: #47885e;
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     transition: 0.5s all;
@@ -480,8 +480,8 @@ html, body{
     -ms-border-radius: 50%;
 }
 .callbacks_here a:after{
-    background: #11c3fe;
-    border: 2px solid #11c3fe;
+    background: #47885e; /*#11c3fe old light blue. now green*/
+    border: 2px solid #47885e; /*#11c3fe old light blue. now green*/
 }
 /*-- //slider --*/
 .agileits-banner-left {
@@ -534,8 +534,8 @@ html, body{
     background: none;
 }
 .w3-button a:hover{
-	background:#11c3fe;
-	border: solid 1px #11c3fe;
+	background:#47885e; /*#11c3fe old light blue. now green*/
+	border: solid 1px #47885e; /*#11c3fe old light blue. now green*/
 }
 .w3-button a:focus{
 	outline:none;
