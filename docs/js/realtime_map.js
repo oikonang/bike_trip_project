@@ -12,7 +12,7 @@ var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/oikonang/cj33g56
 });
 
 // Mapbox with leaflet
-var map = L.map('realtime_map').addLayer(mapboxTiles).setView(center, 3);
+var map = L.map('realtime_map').addLayer(mapboxTiles).setView(center, 4);
             
 //  Initialize the SVG layer (OLD CSS)
 map._initPathRoot()    
