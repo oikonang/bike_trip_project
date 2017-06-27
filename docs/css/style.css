@@ -905,6 +905,20 @@ html, body{
 #realtime-map p{
   color:#999999 
 }
+#realtime-map .sleep-button{
+  max-width: 100px; 
+  z-index: 5000; 
+  opacity: 0; 
+  margin: auto; 
+  text-align: center; 
+  border-radius: 4px; 
+  top: 10%; position: 
+  relative; 
+  padding: 5px; 
+  border: 2px solid black; 
+  color: black; 
+  background: white;
+}
 /*-- //map --*/
 
 /*-- footer --*/

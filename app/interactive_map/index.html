@@ -85,8 +85,8 @@
 
         // The y axis is an incremental number representing the day number
         x.domain(data.map(function(d, ix) { return ix; }));
-        
-        y.domain([0, d3.max(data, function(d) { return d.distance; })]);
+        // Set domain from 0 to the maximum value of ttl_dist in the dataset
+        y.domain([0, d3.max(data, function(d) { return d.ttl_dist; })]);
         
         // The x-axis
         svg.append("g")
@@ -110,8 +110,8 @@
             .attr("class", "bar")
             .attr("x", function(d, ix) { return x(ix); })
             .attr("width", x.bandwidth())
-            .attr("y", function(d) { return y(d.distance); })
-            .attr("height", function(d) { return height - y(d.distance); })
+            .attr("y", function(d) { return y(d.ttl_dist); })
+            .attr("height", function(d) { return height - y(d.ttl_dist); })
             .on('mouseover', function(d) {
               draw_elevation(d);
               draw_map_route(d);
@@ -159,10 +159,10 @@
       max_ix = data.length;
       
       var line = d3.line()
-        .x(function(d, ix) { return x(ix * run_data.distance / max_ix); })
+        .x(function(d, ix) { return x(ix * run_data.ttl_dist / max_ix); })
         .y(function(d) { return y(d); });
       
-      x.domain([0, run_data.distance]);
+      x.domain([0, run_data.ttl_dist]);
       
       y.domain([0, 200]);
       
@@ -231,7 +231,7 @@
   <script>
     // load neighborhood data
     document.addEventListener('DOMContentLoaded', function() {
-      d3.csv("tmp.json", draw);
+      d3.json("tmp_trim.json", draw);
     });
   </script>
 </body>
