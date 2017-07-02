@@ -1,11 +1,11 @@
    body {
-     height: 800px;
+     height: 600px;
      width: 1200px;
      background-color: #eeeeee;
    }
     #map {
         width:50%;
-        height:50%;
+        height:100%;
         float: right;
       }
     #bar {
@@ -13,11 +13,32 @@
       height: 150px;
       float: left;
     }
-    #elev {
+ 
+
+/* New Staff*/
+    #graphs {
       width: 50%;
-      height: 200px;
+      height: 450px;
       float: left;
     }
+    .area {
+      //fill: #e7e7e7;
+      fill: transparent;
+    }
+    
+    .overlay {
+      fill: none;
+      pointer-events: all;
+    }
+  .focusLine {
+    stroke: blue;
+    stroke-dasharray: 3, 3;
+    opacity: 0.5;
+  }
+/* New Staff END*/
+
+
+
     .line {
       stroke-width: 2;
       fill: none;
@@ -25,6 +46,9 @@
     }
     .bar {
       fill: #999999; /*green #47885e*/
+    }
+    .bartext{
+      font: 10px sans-serif;
     }
     .active {
       fill: #47885e;

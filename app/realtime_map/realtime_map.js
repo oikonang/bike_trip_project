@@ -15,7 +15,7 @@ var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/oikonang/cj33g56
 var map = L.map('map').addLayer(mapboxTiles).setView(center, 4);
             
 //  Initialize the SVG layer (OLD CSS)
-map._initPathRoot()    
+map._initPathRoot()   
 
 /* We simply pick up the SVG from the map object (OLD CSS)*/
 var svg = d3.select("#map").select("svg"),
@@ -132,7 +132,7 @@ legend.html('<i style="background: green"></i>' + 'Starting Point' + '<br/>' +
             .y(function(d) {
                 return applyLatLngToLayer(d).y
             })
-            .curve(d3.curveCardinal);
+            .curve(d3.curveMonotoneX);
 
 
         map.on("viewreset", update);
