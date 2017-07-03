@@ -67,6 +67,7 @@
             .attr("y", function(d) { return y(d.ttl_dist)+yTextPadding; })
             .text(function(d){ return d.ttl_dist+" km"; });
 
+
         //Setting onMouseOver event handler for bars
         svg.selectAll(".bar").on("mouseover", function(d){  
           $(".active").removeClass("active");
@@ -85,6 +86,9 @@
       
       // Define format of the text value on top of the moving circle
       var formatValue = d3.format(",.1f");
+
+      // Define format for time
+      var parseTime = d3.timeParse("%I:%M:%S");
       
       // Create a bisect to handle the position of the mouse in relation with the data on mousemove
       var bisect = d3.bisector(function(d){ return d.distance; }).left; // NEW STAFF
@@ -103,6 +107,7 @@
          for ( var i=0; i<day_data['elevation'].length; i++) {
          tmp.push(
             {distance : day_data['distance'][i],
+              time : day_data['time_form'][i],
               value : day_data[yarray[ix]][i],
               lat : day_data['path'][i][0],
               long : day_data['path'][i][1],
@@ -132,7 +137,7 @@
           }
         }
       }
-      
+      //console.log(parseTime(new_data_nest[0].values[0]['time']));
       // disctionary to hold our yscales
       var ys = {};
       
@@ -324,11 +329,12 @@
         
         var tmplat = new_data_nest[0].values[posit1]['lat']
         var tmplon = new_data_nest[0].values[posit1]['long']
+        var tmptime = new_data_nest[0].values[posit1]['time']
         
         LatLng = new L.LatLng(tmplat,tmplon);
 
         // Sava coords into a variable object
-        var coords2 = [{tmplat,tmplon,LatLng}]
+        var coords2 = [{tmplat,tmplon,LatLng,tmptime}]
          
         // This is the market point
         var feature = g2.selectAll("path")
@@ -338,6 +344,19 @@
              .style("fill", "#fef6cd")
              .style("stroke-width", "1.5px")
              .attr("r", 4.5);
+
+         // I want names for my coffee and beer
+        var circletext = g2.selectAll("text")
+            .data(coords2)
+            .enter()
+            .append("text")
+            .attr("class", "locnames")
+            .text( tmptime + " time")
+            .attr("y",  -10)
+            .style("font-size", "12px")
+            .style("fill", "grey")
+            
+            ;
         
         // Up until here it is correct
         map.on("viewreset", update);
@@ -346,13 +365,21 @@
         // Create a function to handle the layers on zoum in and out
         function update() {
             feature.attr("transform", 
-            function(d) { 
+              function(d) { 
                 return "translate("+ 
                     map.latLngToLayerPoint(d.LatLng).x +","+ 
                     map.latLngToLayerPoint(d.LatLng).y +")";
-                }
+                  }
             )
+            circletext.attr("transform",
+                function(d) {
+                  return "translate("+ 
+                    map.latLngToLayerPoint(d.LatLng).x +","+ 
+                    map.latLngToLayerPoint(d.LatLng).y +")";
+                });
+
         } // close update
+        
         //////////////////////////////////////// END Marker
 
         // Start the transform - translate function
@@ -383,7 +410,7 @@
       
           
       } // End draw elevation
-      function draw_base_map() {
+      function draw_base_map(data) {
         // The center must be updated whenever I put a new coordinate on the map
         var center = [55.6716,12.5714]  //[53.01,25.73]->Eastern Europe,  [37.77, -122.45]->California
 
@@ -401,7 +428,21 @@
 
         // Initialize map 
         window.map = map 
-      }
+
+        // Pick the map and apply the 
+        map = window.map;
+        
+        // Create an empty array to hold the coordinates
+        var all_latlng = [];
+
+        // Create an array of all coordinates of all days and concatenate into a sigle array
+        for ( var i=0; i<data.length; i++) {
+          tmparray = data[i]['path'];
+          all_latlng = all_latlng.concat( tmparray );
+        }
+        // Keep the polyline of the whole route in the same position with red color
+        var polyline = L.polyline(all_latlng, {color: 'red'}).addTo(map); 
+      } // End draw_base_map
 
       // Draw lan lot on map
       function draw_map_route(day_data) {
@@ -410,14 +451,13 @@
           map.removeLayer(window.currentPath);
         };
         latlng = day_data['path'];
-        var polyline = L.polyline(latlng, {color: 'red'}).addTo(map);
-        window.currentPath = polyline;
+        var polyline2 = L.polyline(latlng, {color: '#47885e'}).addTo(map);
+        window.currentPath = polyline2;
       }
 
     function draw(data) {
-      //data.reverse();
       draw_distances(data);
-      draw_base_map();
+      draw_base_map(data);
     }
     // Function that capitalizes the first letter of a word
     function capitalizeFirstLetter(string) {

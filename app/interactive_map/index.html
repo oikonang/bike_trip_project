@@ -10,6 +10,7 @@
     <script type="text/javascript" src="interactive_map.js"></script> <!-- This is the js for the interactive map -->
 </head>
 <body>
+  <div id='interactive_map'>
     <div id='map'></div>
     <svg id='bar'></svg>
     <!-- <svg id='elev'></svg> -->
@@ -21,6 +22,7 @@
         d3.json("tmp_trim.json", draw);
       });
     </script>
+  </div>
     
 </body>
 </html>
