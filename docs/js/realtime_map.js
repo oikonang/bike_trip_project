@@ -46,7 +46,7 @@ var marker_start = L.marker([59.4167, 24.7992]).addTo(map);
 marker_start.bindPopup("<b>Starting Point!</b>").openPopup();
 
 // Create finishing marker
-var marker_finish = L.marker([40.62478, 22.94952]).addTo(map);
+var marker_finish = L.marker([40.9977995, 28.9282999]).addTo(map);
 marker_finish.bindPopup("<b>Finishing Point!</b>").openPopup();
     
     d3.csv("../data/geolocations.csv", function(collection) {

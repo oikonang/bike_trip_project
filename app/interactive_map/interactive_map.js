@@ -25,10 +25,21 @@
                     .scale(y)
                     .ticks(5);
 
+      // The tooltip on top of bars
+      var tip = d3.tip()
+                  .attr('class', 'd3-tip')
+                  .offset([-10, 0])
+                  .html(function(d) {
+                    return "<strong>Day#" + d.day_no + " distance:</strong> <span style='color:#47885e'>" + d.ttl_dist + " km</span>";
+                  })
+
       var svg = d3.select("#bar")
                   .append("g")
                   .attr("transform", "translate(" + margin.left + "," + margin.top*2 + ")");
-        
+      
+      // Call the tooltip inside svg
+      svg.call(tip);
+
         // The x-axis
         svg.append("g")
             .attr("class", "x axis")
@@ -54,30 +65,20 @@
             .attr("width", x.bandwidth())
             .attr("y", function(d) { return y(d.ttl_dist); })
             .attr("height", function(d) { return height - y(d.ttl_dist); })
-        
-        // The tips on top of bars
-        svg.selectAll(".bartext")
-            .data(data)
-            .enter().append("text")
-            .attr("class", "bartext")
-            .attr("text-anchor", "middle")
-            .attr("font", "10px sans-serif")
-            .attr("fill", "#fef6cd")
-            .attr("x", function(d,ix) { return x(ix)+x.bandwidth()/2; })
-            .attr("y", function(d) { return y(d.ttl_dist)+yTextPadding; })
-            .text(function(d){ return d.ttl_dist+" km"; });
-
+            .on('mouseover', tip.show)
+            .on('mouseout', tip.hide);
 
         //Setting onMouseOver event handler for bars
-        svg.selectAll(".bar").on("mouseover", function(d){  
+        svg.selectAll(".bar").on("click", function(d){  
           $(".active").removeClass("active");
-          $(this).addClass("active");              
+          $(this).addClass("active"); 
+
           draw_graphs(d);
           draw_map_route(d);
         });
     }
     
-    ////////////////////////////////// This is the elevation linegraph ///////////////////////////////////
+    ////////////////////////////////// These are the linegraphs /////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     function draw_graphs(day_data) {
       var margin = {top: 20, right: 20, bottom: 30, left: 50},
@@ -111,7 +112,7 @@
               value : day_data[yarray[ix]][i],
               lat : day_data['path'][i][0],
               long : day_data['path'][i][1],
-              symbol : yarray[ix]
+              symbol : yarray[ix],
           });
         }
         new_data_nest.push({
@@ -119,25 +120,29 @@
             values:tmp
         });
       }
-      // Add the SI symbol in the nested datasetfor each metric
+      // Add the SI symbol in the nested dataset for each metric
       for ( var ix=0; ix<3; ix++) {
         if (new_data_nest[ix].key=='elevation'){
+          new_data_nest[ix]['elev_gain'] = day_data['elev_gain'] // adds elevation gain for elevation
           for ( var i=0; i<new_data_nest[0].values.length; i++) {
               new_data_nest[ix].values[i]['si'] = 'm'
           }
         }
         else if (new_data_nest[ix].key=='speed'){
+          new_data_nest[ix]['avg_speed'] = day_data['avg_speed'] // adds avg speed for speed
+          new_data_nest[ix]['max_speed'] = day_data['max_speed'] // adds max speed for speed
           for ( var i=0; i<new_data_nest[0].values.length; i++) {
               new_data_nest[ix].values[i]['si'] = 'km/h'
           }
         }
         else if (new_data_nest[ix].key=='heartrate'){
+          new_data_nest[ix]['avg_active_HR'] = day_data['avg_active_HR'] // adds avg active HR for heartrate
           for ( var i=0; i<new_data_nest[0].values.length; i++) {
               new_data_nest[ix].values[i]['si'] = 'bpm'
           }
         }
       }
-      //console.log(parseTime(new_data_nest[0].values[0]['time']));
+      
       // disctionary to hold our yscales
       var ys = {};
       
@@ -233,8 +238,26 @@
          .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
             .attr("transform", "translate("+ (-margin.left/1.6) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
             .text(function(d) {
+                //console.log(d);
                 return capitalizeFirstLetter(d.key);
             });  
+
+      // Averages and more
+      svg.append("text")
+         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
+            .attr("transform", "translate("+ (margin.left*5) +","+(height/1.2)+")")  // text is drawn off the screen top left, move down and out and rotate
+            .text(function(d) {
+              if (d.key == 'elevation'){
+                return 'Elevation gain : ' + formatValue(d.elev_gain);
+              }
+              else if (d.key == 'speed'){
+                return 'Avg. speed : ' + formatValue(d.avg_speed) + ' | Max speed : ' + formatValue(d.max_speed);
+              }
+              else if (d.key == 'heartrate'){
+                return 'Avg. HR: ' + formatValue(d.avg_active_HR);
+              }
+            })
+            .style('opacity', 0.5);  
 
       // The x-axis
       svg.append('g') // create a <g> element
@@ -351,7 +374,7 @@
             .enter()
             .append("text")
             .attr("class", "locnames")
-            .text( tmptime + " time")
+            .text( tmptime + " cycling time")
             .attr("y",  -10)
             .style("font-size", "12px")
             .style("fill", "grey")
@@ -412,7 +435,7 @@
       } // End draw elevation
       function draw_base_map(data) {
         // The center must be updated whenever I put a new coordinate on the map
-        var center = [55.6716,12.5714]  //[53.01,25.73]->Eastern Europe,  [37.77, -122.45]->California
+        var center = [53.01,25.73]  //[53.01,25.73]->Eastern Europe,  [37.77, -122.45]->California
 
         // The token is for access to the mapbox API
         var accessToken = 'pk.eyJ1Ijoib2lrb25hbmciLCJhIjoiY2ozM2RjcjIyMDBjODJ3bzh3bnRyOHBxMyJ9.nQH16WG-DcBB_TQEEJiuCA';
@@ -424,7 +447,7 @@
             accessToken: accessToken
         });
         // Mapbox with leaflet
-        var map = L.map('map').addLayer(mapboxTiles).setView(center, 12);
+        var map = L.map('map').addLayer(mapboxTiles).setView(center, 4);
 
         // Initialize map 
         window.map = map 

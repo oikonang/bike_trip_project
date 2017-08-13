@@ -12,8 +12,8 @@ client_id, secret = open('python_data/keys/client_angelos.secret').read().strip(
 port = 5000
 url = 'http://localhost:%d/authorized' % port
 allDone = False
-types = ['time', 'distance', 'latlng', 'altitude', 'velocity_smooth', 'moving', 'grade_smooth', 'temp', 'heartrate']
-limit = 9 # change that number to bring the number of last activities
+types = ['time', 'distance', 'latlng', 'altitude', 'velocity_smooth', 'moving', 'grade_smooth', 'temp', 'heartrate','watt']
+limit = 121 # change that number to bring the number of last activities
 
 #Create the strava client, and open the web browser for authentication
 client = stravalib.client.Client()
