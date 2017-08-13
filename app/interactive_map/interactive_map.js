@@ -49,7 +49,7 @@
         svg.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
             .attr("transform", "translate("+ (width/2) +","+(height+(margin.bottom*2))+")")  // centre below axis
-            .text("Day");
+            .text("Day#");
          // The y-axis title
         svg.append("text")
             .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
@@ -172,7 +172,7 @@
       // Build the x axis
       var xAxis = d3.axisBottom()
                     .scale(xScale)
-                    .tickFormat(d3.format(".1s"));
+                    .tickFormat(d3.format(".2s"));
 
       // Compute the maximum y-value per graph, needed for the y-domain.
       new_data_nest.forEach(function(s) {
@@ -242,10 +242,10 @@
                 return capitalizeFirstLetter(d.key);
             });  
 
-      // Averages and more
+      // Averages and more on the background of the graphs
       svg.append("text")
-         .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
-            .attr("transform", "translate("+ (margin.left*5) +","+(height/1.2)+")")  // text is drawn off the screen top left, move down and out and rotate
+         .attr("text-anchor", "middle")  
+            .attr("transform", "translate("+ (margin.left*5) +","+(height/1.2)+")") 
             .text(function(d) {
               if (d.key == 'elevation'){
                 return 'Elevation gain : ' + formatValue(d.elev_gain);
