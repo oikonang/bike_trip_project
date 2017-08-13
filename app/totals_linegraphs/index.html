@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D3 v.4 multilinegraph</title>
+    <link rel="stylesheet" type="text/css" href="totals_linegraphs.css">
+    <script src="https://d3js.org/d3.v4.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="totals_linegraphs.js"></script>
+</head>
+<body>
+    <div id="multilinegraph">
+        <div id='linegraphs'></div>
+        <script>
+          // load interactive map data
+          document.addEventListener('DOMContentLoaded', function() {
+            d3.csv("totals_linegraphs.csv", draw_lines);
+          });
+        </script>   
+    </div>
+
+</body>
+</html>
