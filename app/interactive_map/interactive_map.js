@@ -367,7 +367,7 @@
              .style("stroke-width", "1.5px")
              .attr("r", 4.5);
 
-         // I want names for my coffee and beer
+         // The text next to the marker circle indicating the biking hours spent
         var circletext = g2.selectAll("text")
             .data(coords2)
             .enter()
@@ -376,9 +376,7 @@
             .text( tmptime + " cycling time")
             .attr("y",  -10)
             .style("font-size", "12px")
-            .style("fill", "grey")
-            
-            ;
+            .style("fill", "grey");
         
         // Up until here it is correct
         map.on("viewreset", update);
@@ -464,6 +462,47 @@
         }
         // Keep the polyline of the whole route in the same position with red color
         var polyline = L.polyline(all_latlng, {color: 'red'}).addTo(map); 
+        
+        // Load weather data
+        d3.csv("weather.csv", function(weather) {
+          // Create an empty list of variables to fit the weather markers
+          var markers = [];
+console.log(weather);
+          // Create weather icons options(sizes)
+          var WeatherIcon = L.Icon.extend({
+            options: {
+                iconSize:     [40, 40],
+                iconAnchor:   [16, 16],
+                popupAnchor:  [0, -18]
+                }
+          });
+
+          //console.log(weather);
+          // Create dynamically variables from weather data
+          for (var i=0; i<weather.length; i++){
+            markers[i] = L.marker([+weather[i].lat,+weather[i].lon], {icon: new WeatherIcon({iconUrl: 'weather_icons/'+weather[i].icon+'.png'})})
+                          .bindPopup('Day: ' + weather[i].day_no + '<br>' +
+                                     'Date: ' + weather[i].date + '<br>' +
+                                     'Time: ' + weather[i].time + '<br>' +
+                                     'Temp: ' + weather[i].tempC + ' Co <br>'+
+                                     'Humidity: ' + weather[i].humidity + '% <br>' +
+                                     'WindSpeed: ' + weather[i].windSpeed + 'km/h');
+          }
+
+          // Create a markers group for easier handling
+          var markers_group = L.layerGroup(markers);
+
+          var overlayMaps = {
+            "Weather": markers_group
+          };
+
+          L.control.layers(null,overlayMaps).addTo(map);
+
+          
+          
+        }) // End csv sourcing of weather data
+
+
       } // End draw_base_map
 
       // Draw lan lot on map
@@ -485,3 +524,13 @@
     function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
     }
+    // Function that creates Variables dynamically from data
+    // function createVariables(){
+    //       var markers = [];
+
+    //       for (var i = 0; i <= 20; ++i) {
+    //           markers[i] = "whatever";
+    //       }
+
+    //       return marker;
+    //     }
