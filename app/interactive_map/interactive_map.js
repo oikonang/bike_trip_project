@@ -84,7 +84,7 @@
       var margin = {top: 20, right: 20, bottom: 30, left: 50},
           width = 600 - margin.left - margin.right,
           height = 150 - margin.top - margin.bottom;
-      console.log(day_data);
+     
       // Define format of the text value on top of the moving circle
       var formatValue = d3.format(",.1f");
 
@@ -194,7 +194,7 @@
           return s.values[s.values.length - 1].distance;
         })
       ]);
-     console.log(new_data_nest);
+
       // Add an SVG element for each symbol, with the desired dimensions and margin.
       var svg1 = d3.select("#graphs").selectAll("svg")
         .data(new_data_nest) 
@@ -238,7 +238,6 @@
          .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor
             .attr("transform", "translate("+ (-margin.left/1.6) +","+(height/2)+")rotate(-90)")  // text is drawn off the screen top left, move down and out and rotate
             .text(function(d) {
-                //console.log(d);
                 return capitalizeFirstLetter(d.key);
             });  
 

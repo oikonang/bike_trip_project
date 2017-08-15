@@ -32,7 +32,7 @@
       margin-top: 20px;
     }
   .focusLine {
-    stroke: blue;
+    stroke: grey;
     stroke-dasharray: 3, 3;
     opacity: 0.5;
   }

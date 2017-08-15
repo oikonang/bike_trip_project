@@ -1,20 +1,68 @@
 #multilinegraph {
-     height: 100%;
-     width: 100%;
+     height: 620px;
+     width: 1200px;
      background-color: #eeeeee;
    }
 
 /* New Staff*/
     #linegraphs {
-      width: 100%;
+      width: 50%;
       height: 100%;
-      /*float: left;*/
+      float: left;
     }
     #linegraphs svg:last-child {
-        padding-bottom: 20px;
+        padding-bottom: 40px;
     }
     #linegraphs svg:first-child {
         padding-top: 20px;
+    }
+    #panel {
+        width:50%;
+        height:100%;
+        float: right;
+        display: flex;
+        background: #47885e;
+        box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+        border-radius: 16px 0px 0px 16px;
+        opacity: 0.3;
+        overflow: hidden;
+    }
+    .stats-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        padding: 0 120px;
+        height: 60px;
+        width: 29%;
+        background: #fef6cd;
+        color: #000;
+        font-weight: 300;
+        font-size: 40px;
+        border-radius: 16px 0px 0px 0px;
+    }
+    .ttl-stats {
+        font-weight: 200;
+        width: 100%;
+        font-size: 40px;
+        opacity: 0.8;
+        color: #000000;
+        margin-bottom: 6px;
+        padding: 20px 0px 20px 10px;
+        /*padding-top: 20px;*/
+        margin-top: 100px;
+    }
+    .stats {
+        font-weight: 200;
+        font-size: 40px;
+        opacity: 0.8;
+        color: #000000;
+        margin-bottom: 6px;
+        padding: 20px 0px 20px 10px;
+        line-height: 150%;
+        /*padding-top: 20px;*/
+        margin-top: 70px;
     }
     .area {
       fill: #e7e7e7;
@@ -27,9 +75,10 @@
       margin-top: 20px;
     }
   .focusLine {
-    stroke: blue;
+    stroke: grey;
     stroke-dasharray: 3, 3;
     opacity: 0.5;
+    padding-bottom: 20px;
   }
 /* New Staff END*/
 
