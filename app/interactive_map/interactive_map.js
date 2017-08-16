@@ -188,9 +188,11 @@
       // We assume values are sorted
       xScale.domain([
         d3.min(new_data_nest, function(s) {
+          console.log(s.values[0].distance);
           return s.values[0].distance;
         }),
         d3.max(new_data_nest, function(s) {
+          console.log(s.values[s.values.length - 1].distance);
           return s.values[s.values.length - 1].distance;
         })
       ]);
@@ -467,7 +469,8 @@
         d3.csv("weather.csv", function(weather) {
           // Create an empty list of variables to fit the weather markers
           var markers = [];
-console.log(weather);
+          var windmarkers = []; 
+
           // Create weather icons options(sizes)
           var WeatherIcon = L.Icon.extend({
             options: {
@@ -477,29 +480,41 @@ console.log(weather);
                 }
           });
 
-          //console.log(weather);
+          
           // Create dynamically variables from weather data
           for (var i=0; i<weather.length; i++){
             markers[i] = L.marker([+weather[i].lat,+weather[i].lon], {icon: new WeatherIcon({iconUrl: 'weather_icons/'+weather[i].icon+'.png'})})
-                          .bindPopup('Day: ' + weather[i].day_no + '<br>' +
-                                     'Date: ' + weather[i].date + '<br>' +
-                                     'Time: ' + weather[i].time + '<br>' +
-                                     'Temp: ' + weather[i].tempC + ' Co <br>'+
-                                     'Humidity: ' + weather[i].humidity + '% <br>' +
-                                     'WindSpeed: ' + weather[i].windSpeed + 'km/h');
-          }
+                          .bindPopup('<table><tr><td>Day: </td><td>' + weather[i].day_no + '</td></tr>' +
+                                     '<tr><td>Date: </td><td>' + weather[i].date + '</td></tr>' +
+                                     '<tr><td>Time: </td><td>' + weather[i].time + '</td></tr>' +
+                                     '<tr><td>Temp: </td><td>' + weather[i].tempC + ' Co </td></tr>'+
+                                     '<tr><td>Humidity: </td><td>' + weather[i].humidity + '% </td></tr></table>');
+          } // Close for loop for weather data
 
-          // Create a markers group for easier handling
+          // Create dynamically variables from wind data 
+          for (var i=0; i<weather.length; i++){
+            // Convert wind speed from km/h to knots by multiplying with 0.5399565
+            // Use windbarb leaflet plugin
+            windmarkers[i] = L.marker([+weather[i].lat,+weather[i].lon], {icon: L.WindBarb.icon({deg: +weather[i].windDeg, speed: +weather[i].windSpeed*0.5399565, pointRadius: 5, strokeLength: 20})})
+                          .bindPopup('<table><tr><td>Day: </td><td>' + weather[i].day_no + '</td></tr>' +
+                                     '<tr><td>Date: </td><td>' + weather[i].date + '</td></tr>' +
+                                     '<tr><td>Time: </td><td>' + weather[i].time + '</td></tr>' +
+                                     '<tr><td>Wind Direction: </td><td>' + degToCompass(+weather[i].windDeg) + '</td></tr>' +
+                                     '<tr><td>Wind Speed: </td><td>' + weather[i].windSpeed + 'km/h </td></tr></table>');
+          } // Close for loop for weather data
+
+          // Create a markers group for weather data
           var markers_group = L.layerGroup(markers);
 
+          // Create a wind markers group for wind data
+          var wind_markers_group = L.layerGroup(windmarkers)
+
           var overlayMaps = {
-            "Weather": markers_group
+            "Weather": markers_group,
+            "Wind" : wind_markers_group
           };
-
+          // add layers to the map
           L.control.layers(null,overlayMaps).addTo(map);
-
-          
-          
         }) // End csv sourcing of weather data
 
 
@@ -522,15 +537,11 @@ console.log(weather);
     }
     // Function that capitalizes the first letter of a word
     function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+      return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    // Function that creates Variables dynamically from data
-    // function createVariables(){
-    //       var markers = [];
-
-    //       for (var i = 0; i <= 20; ++i) {
-    //           markers[i] = "whatever";
-    //       }
-
-    //       return marker;
-    //     }
+    // Function that converts wind degrees to compass North, South, etc..
+    function degToCompass(num) {
+      var val = Math.floor((num / 22.5) + 0.5);
+      var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+      return arr[(val % 16)];
+    }
