@@ -3,87 +3,100 @@ function areagraph(data) {
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
-    // var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    //       width = 1200 - margin.left - margin.right,
-    //       height = 600 - margin.top - margin.bottom;
-    
-    // Build the temp lines
-    var maxtempLine = d3.line()
-                .x(function(d) { return xScale(+d.day_no); })
-                .y(function(d) { return tempScale(+d.max_temp); });
-
-    var mintempLine = d3.line()
-                .x(function(d) { return xScale(+d.day_no); })
-                .y(function(d) { return tempScale(+d.min_temp); });
-
-    // Build the wind lines
-    var maxwindLine = d3.line()
-                .x(function(d) { return xScale(+d.day_no); })
-                .y(function(d) { return windScale(+d.max_wind); });
-
-    var minwindLine = d3.line()
-                .x(function(d) { return xScale(+d.day_no); })
-                .y(function(d) { return windScale(+d.min_wind); });
-    
-    // Build the y Scales           
-    var tempScale = d3.scaleLinear()
-                      .rangeRound([height, 0]);
-
-    var windScale = d3.scaleLinear()
-                      .rangeRound([height, 0]);
+    // Build the y Scales  ///////////////////////////////////////         
+    var yScale = d3.scaleLinear()
+                    .range([height, 0]);
 
     // Build the x Scale
     var xScale = d3.scaleLinear()
-                   .rangeRound([0, width]);
+                   .range([0, width]);
 
     // Build the x axis
     var xAxis = d3.axisBottom()
                 .scale(xScale)
 
-    // Build the domains of scales
-    // Hardcoded because it is always from 1 to 28 days
-    // xScale.domain([1,28]);
+    var yAxisLeft = d3.axisLeft()
+                        .scale(yScale)
+
+    var yAxisRight = d3.axisRight()
+                        .scale(yScale)
+    
+    // Build temp area /////////////////////////////////////
+    var tempGenerator = d3.area()
+                        .curve(d3.curveBasis)
+                        .x(function(d) { return xScale(+d.day_no); })
+                        .y0(function(d) { return yScale(+d.min_temp); })
+                        .y1(function(d) { return yScale(+d.max_temp); });
+
+    // Build wind area /////////////////////////////////////
+    var windGenerator = d3.area()
+                        .curve(d3.curveBasis)
+                        .x(function(d) { return xScale(+d.day_no); })
+                        .y0(function(d) { return yScale(+d.min_wind); })
+                        .y1(function(d) { return yScale(+d.max_wind); });
+
+    // Build the domains of scales /////////////////////////////////
     xScale.domain(d3.extent(data, function(d) { return +d.day_no; }));
-    tempScale.domain([0, d3.max(data, function(d) { return +d.max_temp; })]);
-    windScale.domain([0, d3.max(data, function(d) { return +d.max_wind; })]);
+    yScale.domain([
+        d3.min(data, function(d) { return Math.min(+d.min_temp,+d.min_wind)}), 
+        d3.max(data, function(d) { return Math.max(+d.max_temp,+d.max_wind); })
+    ]);
 
+    // Create the graph and name it svg
+    var svg = d3.select("#weather")
+                          .append("svg")
+                          .style('width',width + margin.left + margin.right)
+                          .style('height',height + margin.top + margin.bottom)
+                          .append("g")
+                          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    // Initiate the data sourcing
+    svg.datum(data);
 
-    var svg = d3.select("svg")//.append("svg");
+    // Append area between maxtemp and mintemp ////////////////////////////////////////////
+    svg.append("path")
+      .attr("class", "area temp")
+      .attr("d", tempGenerator);
 
-    var g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    // Append area below mintemp
+    svg.append("path")
+      .attr("class", "area wind")
+      .attr("d", windGenerator);
+    
+    
+    // Build x-axis
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-    var area = d3.area()
-                .x(function(d) { return xScale(+d.day_no); })
-                .y1(function(d) { return tempScale(+d.max_temp); });
+    // FIX THE TEXT TO BE DISPLAYED
+    // Build y-axis Left
+    svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxisLeft)
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Temperature (ºC)")
+      .style("fill", 'rgb(252,141,89)')
+      .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 1)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Wind Speed (km/h)")
+      .style("fill", 'rgb(252,141,89)');
 
-    area.y0(tempScale(0));
-
-    g.append("path")
-      .datum(data)
-      .attr("fill", "steelblue")
-      .attr("d", area);
-
-      g.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(xScale));
-
-      g.append("g")
-          .call(d3.axisLeft(tempScale))
-        .append("text")
-          .attr("fill", "#000")
-          .attr("transform", "rotate(-90)")
-          .attr("y", 6)
-          .attr("dy", "0.71em")
-          .attr("text-anchor", "end")
-          .text("Price ($)");
-    // Add an SVG element for each symbol, with the desired dimensions and margin.
-    // var area = d3.select("#weather")
-    //             .datum(data) 
-    //             .enter().append("svg")
-    //             .attr("width", width + margin.left + margin.right)
-    //             .attr("height", height + margin.top + margin.bottom);
-
+    // svg.append("g")             
+    //     .attr("class", "y axis")    
+    //     .attr("transform", "translate(" + width + " ,0)")   
+    //     .style("fill", "red")       
+    //     .call(yAxisRight);
 
 
 }// End of areagraph function

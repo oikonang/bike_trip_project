@@ -187,12 +187,7 @@ function draw_multilinegraph(data) {
       .attr("d", function(d) {
         return line(d.values);
       });
-
-    // Add the area path elements. Note: the y-domain is set per element.
-    svg.append("path")
-    .attr("class", "area")
-    .attr("d", area);
-
+      
     // Title for the y-axis
     svg.append("text")
      .attr("text-anchor", "middle")  // this makes it easy to centre the text as the transform is applied to the anchor

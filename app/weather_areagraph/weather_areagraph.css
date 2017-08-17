@@ -1,0 +1,43 @@
+/*path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}*/
+
+/*.axis path {
+    fill: none;
+    stroke: grey;
+    stroke-width: 0.5;*/
+    /*shape-rendering: crispEdges;
+}
+
+/*line {
+    stroke: red;
+    stroke-width: 2;
+}
+*/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area.temp {
+  fill: rgb(252,141,89); /**/
+  opacity: 0.5;
+}
+
+.area.temp:hover {
+    opacity: 1;
+  }
+
+.area.wind {
+  fill: rgb(145,207,96);
+  opacity: 0.5;
+}
+
+.area.wind:hover {
+    opacity: 1;
+  }
