@@ -1,43 +1,25 @@
-/*path { 
-    stroke: steelblue;
-    stroke-width: 2;
-    fill: none;
-}*/
+#weather{
+    font: 10px sans-serif;
+}
 
-/*.axis path {
+.line,
+.mouse-line {
     fill: none;
     stroke: grey;
-    stroke-width: 0.5;*/
-    /*shape-rendering: crispEdges;
+    stroke-dasharray: 3, 3;
+    opacity: 0.5;
+    padding-bottom: 20px;
 }
-
-/*line {
-    stroke: red;
-    stroke-width: 2;
-}
-*/
 
 .axis path,
-.axis line {
+.axis line ,
+{
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
 }
 
-.area.temp {
-  fill: rgb(252,141,89); /**/
-  opacity: 0.5;
-}
-
-.area.temp:hover {
-    opacity: 1;
-  }
-
+.area.temp,
 .area.wind {
-  fill: rgb(145,207,96);
   opacity: 0.5;
 }
-
-.area.wind:hover {
-    opacity: 1;
-  }

@@ -262,9 +262,6 @@ function draw_multilinegraph(data) {
     .on("mouseover", function() {
       focus.style("display", null);
     })
-    // .on("mouseout", function() {
-    //   focus.style("display", "none");
-    // })
     .on("mousemove", mousemove)
     .on("mouseout", mouseout);
 
@@ -329,6 +326,7 @@ function draw_multilinegraph(data) {
 
         // Start the transform - translate function
         focus.attr("transform", function(d) {
+
             // Define the position of the mouse
             posit = bisect(d.values, xnew, 0, d.values.length);
             
@@ -343,7 +341,7 @@ function draw_multilinegraph(data) {
               .attr("x2", 0)
               .attr("y2", ys[d.key](yDomain[0]-height));
 
-
+console.log(ys[d.key](yDomain[0]-height));
           // adjust mouseover to use appropriate scale
           return "translate(" + xScale(d.values[posit].day_no) + "," + ys[d.key](d.values[posit].value) + ")"
         }); // End transform - translate function
