@@ -3,7 +3,7 @@
 
 # Data folders
 data/
-python/python_data/
+# python/python_data/
 
 # App folder is a repo by itself
 # app/old_website/
