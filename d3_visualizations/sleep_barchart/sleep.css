@@ -1,0 +1,20 @@
+#areagraph{
+    font: 10px sans-serif;
+}
+.data {
+  fill: steelblue;
+}
+
+.axis--y .tick line {
+  stroke: #fff;
+  stroke-opacity: 0.8;
+}
+
+.axis--x .tick line {
+  stroke: #000;
+  stroke-opacity: 0.25;
+}
+
+.axis .domain {
+  display: none;
+}
