@@ -1,5 +1,5 @@
 # THE BIKE TRIP PROJECT
-![logo](python/pics/logo.png)
+![logo](data_manging/pics/logo.png)
 
 Visit the official website [here](www.thebiketripproject.com).
 
