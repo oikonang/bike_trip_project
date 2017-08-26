@@ -1,0 +1,33 @@
+#restingHR{
+    font: 10px sans-serif;
+}
+.axis path,
+.axis line ,
+{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.resting_line {
+    fill: none;
+    stroke: rgb(254,154,152);
+    stroke-dasharray: 3, 3;
+    opacity: 1;
+    padding-bottom: 20px;
+}
+.mouse-line {
+    fill: none;
+    stroke: grey;
+    stroke-dasharray: 3, 3;
+    opacity: 0.7;
+    padding-bottom: 20px;
+}
+
+.area.trip {
+  /*opacity: 0.5;*/
+  fill: rgb(254,246,205);
+}
+
+image{
+    opacity: 0.3;
+}

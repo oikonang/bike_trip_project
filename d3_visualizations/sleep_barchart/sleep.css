@@ -1,8 +1,10 @@
-#areagraph{
+#areagraph,
+text{
     font: 10px sans-serif;
 }
 .data {
-  fill: steelblue;
+  fill: rgb(100,186,226);  /*light blue*/
+  opacity: 0.7;
 }
 
 .axis--y .tick line {
@@ -17,4 +19,15 @@
 
 .axis .domain {
   display: none;
+}
+.line,
+.mouse-line {
+    fill: none;
+    stroke: grey;
+    stroke-dasharray: 3, 3;
+    opacity: 0.7;
+    padding-bottom: 20px;
+}
+image{
+    opacity: 0.3;
 }
