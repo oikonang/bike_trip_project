@@ -1,8 +1,8 @@
 function sleep_areagraph(raw) {
   // Define the boundaries of the graph
   var margin = {top: 20, right: 70, bottom: 30, left: 70},
-      width = 960 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 1200 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
 
   // Define the formats
   var parseTime = d3.utcParse("%Y-%m-%dT%H:%M:%S.%L"),
@@ -111,8 +111,8 @@ function sleep_areagraph(raw) {
     .attr('xlink:href','sleep.png')
     .attr('height', '250')
     .attr('width', '250')
-    .attr('x', '400')
-    .attr('y', '270');
+    .attr('x', width/2)
+    .attr('y', height-margin.bottom*6);
 
   // Append sleep line 
   svg.append("path")

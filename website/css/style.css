@@ -15,6 +15,9 @@ html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
 }
+p.vis_desc{
+  color: #999999;
+}
 /*-- social media icons --*/
 .social-icon {
     padding-top: 0.5em;
@@ -681,6 +684,21 @@ html, body{
 	margin:2em 0 0 0;
 }
 /*-- //tracking --*/
+/*Visualizations*/
+.visualWrapper {
+    position: relative;
+    padding-bottom: 620px; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.visualWrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/*-- //Visualizations --*/
 /*-- gallery --*/
 #gallery p{
   color:#999999 

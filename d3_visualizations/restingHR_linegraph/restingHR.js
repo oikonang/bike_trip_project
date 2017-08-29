@@ -1,8 +1,8 @@
 function resting_linegraph(data) {
     // Define svg limits
     var margin = {top: 20, right: 20, bottom: 50, left: 50},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 1200 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
     // Define date parse and format    
     var parseTime = d3.timeParse("%Y-%m-%d"),
@@ -89,7 +89,7 @@ function resting_linegraph(data) {
         .style("text-anchor", "end")
         .attr("dx", ".8em")
         .attr("dy", "4.0em")
-        .attr("transform", "translate(113,-55)rotate(0)"); // Move the day_no x axis to match the area
+        .attr("transform", "translate(145,-55)rotate(0)"); // Move the day_no x axis to match the area
 
 
     // Build y-axis Left
@@ -114,7 +114,7 @@ function resting_linegraph(data) {
     .attr('height', '150')
     .attr('width', '150')
     .attr('x', width/2-margin.right)
-    .attr('y', '280');
+    .attr('y', '380');
 
     // Create a new object for the mouse over effect
     var mouseG = svg.append("g")

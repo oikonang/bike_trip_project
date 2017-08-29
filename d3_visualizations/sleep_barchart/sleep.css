@@ -2,6 +2,13 @@
 text{
     font: 10px sans-serif;
 }
+#areagraph{
+    height: 600px;
+    width: 1200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 .data {
   fill: rgb(100,186,226);  /*light blue*/
   opacity: 0.7;

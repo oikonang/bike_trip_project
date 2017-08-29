@@ -1,8 +1,8 @@
 function calories_graph(data) {
     // Define the margins of the svg
     var margin = {top: 20, right: 30, bottom: 30, left: 50},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 1200 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
     // Define the format of the 
     var parseDate = d3.timeParse("%Y%m%d")
@@ -139,7 +139,7 @@ function calories_graph(data) {
       .attr('class', 'legend');
 
     legend.append('rect')
-      .attr('x', width - margin.left*2)
+      .attr('x', width - margin.left*2.5)
       .attr('y', function(d, i) {
         return i * 20;
       })
@@ -150,7 +150,7 @@ function calories_graph(data) {
       });
 
     legend.append('text')
-      .attr('x', width - margin.left*1.7)
+      .attr('x', width - margin.left*2.2)
       .attr('y', function(d, i) {
         return (i * 20) + 9;
       })
@@ -192,7 +192,7 @@ function calories_graph(data) {
         .attr("transform", "rotate(-90)")
         .attr("y", 1)
         .attr("dy", "-.65em")
-        .attr("dx", "-30em")
+        .attr("dx", "-32em")
         .style("text-anchor", "end")
         .text("Water Consumption(L)");
 }

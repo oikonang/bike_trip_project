@@ -1,5 +1,10 @@
 #calories{
+    height: 600px;
+    width: 1200px;
     font: 10px sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .axis path,
@@ -16,10 +21,6 @@
   stroke: #fff;
   stroke-opacity: 0.8;
 }
-/*.y.axis.right path{
-  stroke: #fff;
-  stroke-opacity: 0.8;
-}*/
 
 .area.above {
   fill: rgb(252,141,89); /*orange*/

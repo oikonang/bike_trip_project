@@ -1,7 +1,10 @@
 #multilinegraph {
-     height: 620px;
-     width: 1200px;
-     background-color: #eeeeee;
+    height: 600px;
+    width: 1200px;
+    background-color: #eeeeee;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
    }
 
 /* New Staff*/
@@ -35,7 +38,7 @@
         position: absolute;
         padding: 0 120px;
         height: 60px;
-        width: 29%;
+        width: 360px;
         background: #fef6cd;
         color: #000;
         font-weight: 300;

@@ -1,5 +1,10 @@
 #weather{
+    height: 600px;
+    width: 1200px;
     font: 10px sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .line,

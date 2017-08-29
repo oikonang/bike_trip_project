@@ -1,7 +1,10 @@
    #interactive_map {
-     height: 600px;
-     width: 1200px;
-     background-color: #eeeeee;
+    height: 600px;
+    width: 1200px;
+    background-color: #eeeeee;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
    }
     #map {
         width:50%;

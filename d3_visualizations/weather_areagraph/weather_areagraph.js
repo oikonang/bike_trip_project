@@ -1,7 +1,7 @@
 function areagraph(data) {
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        width = 1200 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
     // Define the colors
     var color = ["#ff7f0e","#1f77b4"]
@@ -174,7 +174,7 @@ function areagraph(data) {
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".51em")
-      .attr("dx", "-25em")
+      .attr("dx", "-32em")
       .style("text-anchor", "end")
       .text("Temperature (ºC)")
       .style("fill", color[0]);
@@ -190,7 +190,7 @@ function areagraph(data) {
         .attr("transform", "rotate(-90)")
         .attr("y", 1)
         .attr("dy", "-.65em")
-        .attr("dx", "-4em")
+        .attr("dx", "-6em")
         .style("text-anchor", "end")
         .text("Wind Speed (km/h)")
         .style("fill", color[1]);
