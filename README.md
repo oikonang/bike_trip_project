@@ -12,3 +12,5 @@ This is a repository created to hold the content of the bike trip project. The m
 
 >* A **custom_app/** folder to hold the content of the Android app built especially for the purposes of this project.
 
+You may check the **Wiki** tab for documentation.
+

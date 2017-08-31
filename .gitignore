@@ -2,9 +2,9 @@
 .ipynb_checkpoints
 
 # Data important secret folders
-data_manging/client.secret
-data_manging/python_data/keys/
+#data_manging/client.secret
+#data_manging/python_data/keys/
 
 # Wiki Material
-data_manging/explainer_notebook.ipynb
-data_manging/pics/ 
+#data_manging/explainer_notebook.ipynb
+#data_manging/pics/ 
