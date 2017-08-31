@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TheBikeTripProject</string>
+    <string name="get_coordinates">Get current coordinates and automatically push them to the server:</string>
+</resources>

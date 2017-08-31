@@ -1,9 +1,10 @@
 # IPython Notebook
 .ipynb_checkpoints
 
-# Data folders
-data/
-# python/python_data/
+# Data important secret folders
+data_manging/client.secret
+data_manging/python_data/keys/
 
-# App folder is a repo by itself
-# app/old_website/
+# Wiki Material
+data_manging/Explainer Notebook.ipynb
+data_manging/pics/ 
