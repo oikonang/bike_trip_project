@@ -1,7 +1,7 @@
 # THE BIKE TRIP PROJECT
 ![logo](logo.png)
 
-Visit the official website [here](www.thebiketripproject.com).
+Visit the official website [here](http://www.thebiketripproject.com).
 
 This is a repository created to hold the content of the bike trip project. The main content will include:    
 >* A **docs/** folder for hosting the main webpage of the project.
